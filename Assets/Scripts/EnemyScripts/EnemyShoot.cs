@@ -9,13 +9,13 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] GameObject enemyCrossair;
     [SerializeField] float enemyBulletSpeed = 750f;
     GameObject bulletParent;
-    private int bulletsInChamber;
+    public int BulletsInChamber;
     private float initialDelay;
     private float shootingInterval;
     private void Awake()
     {
         bulletParent = GameObject.Find("Bullet_Parent");
-        bulletsInChamber = 6;
+        BulletsInChamber = 6;
     }
     void Start()
     {
@@ -34,11 +34,11 @@ public class EnemyShoot : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        while (bulletsInChamber > 0)
+        while (BulletsInChamber > 0)
         {
                 shootingInterval = Random.Range(1f, 3f);
                 InstantiateEnemyBullet();
-                bulletsInChamber--;
+                BulletsInChamber--;
                 yield return new WaitForSeconds(shootingInterval);
      
         }

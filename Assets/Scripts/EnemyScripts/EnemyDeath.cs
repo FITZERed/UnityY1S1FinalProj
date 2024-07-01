@@ -9,18 +9,20 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] EnemyRotate enemyRotate;
     [SerializeField] Rigidbody2D rigidbod;
     [SerializeField] BoxCollider2D collider;
-    private void Awake()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("IM SHOT!!!! OUCH!!!!");
+        _animator.SetTrigger("Die");
         OnDeath();
         _animator.SetTrigger("Die");
     }
     public void OnDeath()
     {
+        enemyShoot.BulletsInChamber = 0;
         Debug.Log("I actually am dying");
         enemyRotate.enabled = false;
         enemyShoot.enabled = false;
