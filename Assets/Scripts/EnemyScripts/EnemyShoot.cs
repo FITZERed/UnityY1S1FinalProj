@@ -12,13 +12,16 @@ public class EnemyShoot : MonoBehaviour
     public int BulletsInChamber;
     private float initialDelay;
     private float shootingInterval;
+    private Animator _animator;
     private void Awake()
     {
+        StandoffManager.Instance.EnemyList.Add(gameObject);
         bulletParent = GameObject.Find("Bullet_Parent");
         BulletsInChamber = 6;
     }
     void Start()
     {
+        _animator = GetComponent<Animator>();
         initialDelay = Random.Range(1f, 3f);
         Invoke(nameof(StartShooting), initialDelay);
     }
@@ -36,11 +39,13 @@ public class EnemyShoot : MonoBehaviour
     {
         while (BulletsInChamber > 0)
         {
+            if (_animator.GetBool("GunPointed"))
+            {
                 shootingInterval = Random.Range(1f, 3f);
                 InstantiateEnemyBullet();
                 BulletsInChamber--;
                 yield return new WaitForSeconds(shootingInterval);
-     
+            }
         }
     }
     private void InstantiateEnemyBullet()

@@ -11,10 +11,12 @@ public class PCShoot : MonoBehaviour
     [SerializeField] GameObject crossair;
     [SerializeField] float bulletSpeed = 1000f;
     GameObject bulletParent;
+    [SerializeField] int bulletsInGun;
 
     private void Awake()
     {
         bulletParent = GameObject.Find("Bullet_Parent");
+        bulletsInGun = 6;
     }
    
     void Start()
@@ -25,9 +27,10 @@ public class PCShoot : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse0)) 
+        if (Input.GetKeyUp(KeyCode.Mouse0) && bulletsInGun > 0) 
         {
             InstantiateBullet();
+            bulletsInGun--;
         }
     }
 

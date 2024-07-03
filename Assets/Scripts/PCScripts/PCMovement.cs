@@ -5,12 +5,13 @@ using UnityEngine;
 public class PCMovement : MonoBehaviour
 {
     [SerializeField] float pcSpeed = 10f;
-    float xPosition;
-    float yPosition;
     float horizontalInput;
     float verticalInput;
 
-
+    private void Awake()
+    {
+        StandoffManager.Instance.Player = gameObject;
+    }
     void Start()
     {
         
