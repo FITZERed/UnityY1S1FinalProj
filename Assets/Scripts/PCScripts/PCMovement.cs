@@ -10,11 +10,11 @@ public class PCMovement : MonoBehaviour
 
     private void Awake()
     {
-        StandoffManager.Instance.Player = gameObject;
+        
     }
     void Start()
     {
-        
+        StandoffManager.Instance.Player = gameObject;
     }
 
     

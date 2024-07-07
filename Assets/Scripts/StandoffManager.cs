@@ -5,17 +5,18 @@ using UnityEngine;
 public class StandoffManager : MonoBehaviour
 {
 
-    public List<GameObject> EnemyList;
+    public List<GameObject> EnemyList = new();
     [SerializeField] public GameObject Player;
     public StandoffState State;
     public static StandoffManager Instance;
+    private bool shootoutStarted;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-        else
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -23,6 +24,7 @@ public class StandoffManager : MonoBehaviour
 
     void Start()
     {
+        shootoutStarted = false;
         State = StandoffState.Standoff;
         foreach (GameObject enemy in EnemyList)
         {
@@ -33,18 +35,24 @@ public class StandoffManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        if (shootoutStarted == false && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
         {
             State = StandoffState.Shootout;
+            UpdateState();
+            shootoutStarted = true;
         }
-
-        if (State == StandoffState.Shootout)
+    }
+    private void UpdateState()
+    {
+        switch (State)
         {
-            Player.GetComponent<Animator>().SetBool("GunPointed", true);
-            foreach (GameObject enemy in EnemyList)
-            {
-                enemy.GetComponent<Animator>().SetBool("GunPointed", true);
-            }
+            case StandoffState.Shootout:
+                Player.GetComponent<Animator>().SetBool("GunPointed", true);
+                foreach (GameObject enemy in EnemyList)
+                {
+                    enemy.GetComponent<Animator>().SetBool("GunPointed", true);
+                }
+                break;
         }
     }
 }

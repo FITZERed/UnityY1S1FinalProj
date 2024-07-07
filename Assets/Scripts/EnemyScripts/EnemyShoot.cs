@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
@@ -8,19 +9,18 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] GameObject enemyBarrel;
     [SerializeField] GameObject enemyCrossair;
     [SerializeField] float enemyBulletSpeed = 750f;
-    GameObject bulletParent;
+    [SerializeField] GameObject bulletParent;
     public int BulletsInChamber;
     private float initialDelay;
     private float shootingInterval;
     private Animator _animator;
     private void Awake()
     {
-        StandoffManager.Instance.EnemyList.Add(gameObject);
-        bulletParent = GameObject.Find("Bullet_Parent");
         BulletsInChamber = 6;
     }
     void Start()
     {
+        StandoffManager.Instance.EnemyList.Add(gameObject);
         _animator = GetComponent<Animator>();
         initialDelay = Random.Range(1f, 3f);
         Invoke(nameof(StartShooting), initialDelay);
@@ -50,13 +50,6 @@ public class EnemyShoot : MonoBehaviour
     }
     private void InstantiateEnemyBullet()
     {
-        float enemyBarrelPositionX = enemyBarrel.transform.position.x;
-        float enemyBarrelPositionY = enemyBarrel.transform.position.y;
-        Quaternion enemyBarrelDirection = enemyBarrel.transform.rotation;
-        Vector2 enemyBarrelLocationVector = new Vector2(enemyBarrelPositionX, enemyBarrelPositionY);
-        GameObject enemyBulletClone = Instantiate(enemyBullet, enemyBarrelLocationVector, enemyBarrelDirection, bulletParent.transform);
-        Rigidbody2D enemyBulletPhysics = enemyBulletClone.GetComponent<Rigidbody2D>();
-        Vector2 enemyBulletDirection = (enemyCrossair.transform.position - enemyBarrel.transform.position).normalized;
-        enemyBulletPhysics.velocity = enemyBulletDirection * enemyBulletSpeed * Time.fixedDeltaTime;
+        BulletManager.Instance.SpawnBullet(enemyBarrel, enemyBullet, enemyCrossair, enemyBulletSpeed);
     }
 }

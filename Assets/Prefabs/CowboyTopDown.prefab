@@ -100,6 +100,7 @@ MonoBehaviour:
   barrel: {fileID: 328328232105782041}
   crossair: {fileID: 5347912842062093037}
   bulletSpeed: 1000
+  bulletsInGun: 0
 --- !u!114 &5987968996891835147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1499153716, guid: 72c6bfa1c3e090c47bdca3cf0e32c9bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
