@@ -14,6 +14,7 @@ public class EnemyShoot : MonoBehaviour
     private float initialDelay;
     private float shootingInterval;
     private Animator _animator;
+    float timer;
     private void Awake()
     {
         BulletsInChamber = 6;
@@ -23,29 +24,19 @@ public class EnemyShoot : MonoBehaviour
         StandoffManager.Instance.EnemyList.Add(gameObject);
         _animator = GetComponent<Animator>();
         initialDelay = Random.Range(1f, 3f);
-        Invoke(nameof(StartShooting), initialDelay);
+        shootingInterval = Random.Range(1f, 3f);
     }
 
     
     void Update()
     {
-        
-    }
-    private void StartShooting()
-    {
-        StartCoroutine(Shoot());
-    }
-    IEnumerator Shoot()
-    {
-        while (BulletsInChamber > 0)
+        timer += Time.deltaTime;
+        if (timer > shootingInterval && _animator.GetBool("GunPointed") && BulletsInChamber > 0)
         {
-            if (_animator.GetBool("GunPointed"))
-            {
-                shootingInterval = Random.Range(1f, 3f);
-                InstantiateEnemyBullet();
-                BulletsInChamber--;
-                yield return new WaitForSeconds(shootingInterval);
-            }
+            shootingInterval = Random.Range(1f, 3f);
+            timer = 0f;
+            InstantiateEnemyBullet();
+            BulletsInChamber--;
         }
     }
     private void InstantiateEnemyBullet()

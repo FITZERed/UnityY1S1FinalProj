@@ -9,13 +9,13 @@ public class EnemyRotate : MonoBehaviour
     Animator _animator;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        
         
     }
     void Start()
     {
         TargetPlayer = GameObject.Find("CowboyTopDown");
-        
+        _animator = GetComponent<Animator>();
     }
 
    
