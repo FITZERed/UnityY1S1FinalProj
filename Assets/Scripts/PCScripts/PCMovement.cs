@@ -24,7 +24,7 @@ public class PCMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector2(horizontalInput * Time.deltaTime * pcSpeed, verticalInput * Time.deltaTime * pcSpeed), Space.World);
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -9f, 9f), Mathf.Clamp(transform.position.y, -5f, 5f));
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -17f, 17f), Mathf.Clamp(transform.position.y, -17f, 17f));
 
         
 
