@@ -7,14 +7,14 @@ public class ScenarioChooser : MonoBehaviour
 {
     public void SaloonScenarioCosen()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
     public void StationScenarioChosen()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
     }
     public void TrainScenarioChosen()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(3);
     }
 }

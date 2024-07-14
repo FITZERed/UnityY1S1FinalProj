@@ -28,6 +28,6 @@ public class EnemyDeath : MonoBehaviour
         enemyShoot.enabled = false;
         Debug.Log(enemyShoot.enabled);
         collider.enabled = false;
-
+        StandoffManager.Instance.EnemyList.Remove(gameObject);
     }
 }

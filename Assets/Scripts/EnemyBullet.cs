@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collisionObject)
     {
-        if (collisionObject.tag == "Wall")
+        if (collisionObject.tag == "Player")
         {
 
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PCMovement : MonoBehaviour
 {
-    [SerializeField] float pcSpeed = 10f;
+    [SerializeField] public float pcSpeed = 10f;
     float horizontalInput;
     float verticalInput;
 

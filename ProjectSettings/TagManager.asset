@@ -8,6 +8,7 @@ TagManager:
   - GoalFlag
   - Wall
   - ShootThru
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
