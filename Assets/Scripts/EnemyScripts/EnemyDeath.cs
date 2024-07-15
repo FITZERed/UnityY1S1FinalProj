@@ -13,8 +13,12 @@ public class EnemyDeath : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collisionObject)
     {
+        if (collisionObject.tag == "Train")
+        {
+            //set achievement here
+        }
         Debug.Log("IM SHOT!!!! OUCH!!!!");
         _animator.SetTrigger("Die");
         OnDeath();
