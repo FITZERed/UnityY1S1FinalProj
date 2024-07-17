@@ -35,6 +35,7 @@ public class PCShoot : MonoBehaviour
 
     private void InstantiateBullet()
     {
+        SoundFXManager.Instance.PlaySound("Shot556");
         BulletManager.Instance.SpawnBullet(barrel, bullet, crossair, bulletSpeed);
     }
 }

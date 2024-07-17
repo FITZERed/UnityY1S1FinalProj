@@ -21,7 +21,6 @@ public class BulletManager : MonoBehaviour
 
     public void SpawnBullet(GameObject barrel, GameObject bullet, GameObject crossair, float bulletSpeed)
     {
-        SoundFXManager.Instance.PlaySound("Shot556");
         float barrelPositionX = barrel.transform.position.x;
         float barrelPositionY = barrel.transform.position.y;
         quaternion barrelDirection = barrel.transform.rotation;

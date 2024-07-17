@@ -15,14 +15,18 @@ public class EnemyDeath : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collisionObject)
     {
-        if (collisionObject.tag == "Train")
+        if (collisionObject.tag == "Bullet" || collisionObject.tag == "Train")
         {
-            //set achievement here
+            if (collisionObject.tag == "Train")
+            {
+                Debug.Log("Train Achievement Unlocked");
+                //set achievement here
+            }
+            Debug.Log("IM SHOT!!!! OUCH!!!!");
+            _animator.SetTrigger("Die");
+            OnDeath();
+            _animator.SetTrigger("Die");
         }
-        Debug.Log("IM SHOT!!!! OUCH!!!!");
-        _animator.SetTrigger("Die");
-        OnDeath();
-        _animator.SetTrigger("Die");
     }
     public void OnDeath()
     {

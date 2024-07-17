@@ -41,6 +41,7 @@ public class EnemyShoot : MonoBehaviour
     }
     private void InstantiateEnemyBullet()
     {
+        SoundFXManager.Instance.PlaySound("Shot556");
         BulletManager.Instance.SpawnBullet(enemyBarrel, enemyBullet, enemyCrossair, enemyBulletSpeed);
     }
 }

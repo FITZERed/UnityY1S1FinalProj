@@ -10,6 +10,8 @@ TagManager:
   - ShootThru
   - EnemyBullet
   - Train
+  - Bullet
+  - Briefcase
   layers:
   - Default
   - TransparentFX
