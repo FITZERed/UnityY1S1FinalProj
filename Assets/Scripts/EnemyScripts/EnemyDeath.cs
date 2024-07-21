@@ -20,6 +20,7 @@ public class EnemyDeath : MonoBehaviour
             if (collisionObject.tag == "Train")
             {
                 Debug.Log("Train Achievement Unlocked");
+                PlayerPrefs.SetInt("Patient", 1);
                 //set achievement here
             }
             Debug.Log("IM SHOT!!!! OUCH!!!!");

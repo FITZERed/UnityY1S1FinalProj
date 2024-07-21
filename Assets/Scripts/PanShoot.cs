@@ -33,5 +33,6 @@ public class PanShoot : MonoBehaviour
         SoundFXManager.Instance.PlaySound("bulletRico");
         BulletManager.Instance.SpawnBullet(barrel, bullet, crossair, deflectSpeed);
         Debug.Log("Pan Achievement Unlocked");
+        PlayerPrefs.SetInt("Resourceful", 1);
     }
 }

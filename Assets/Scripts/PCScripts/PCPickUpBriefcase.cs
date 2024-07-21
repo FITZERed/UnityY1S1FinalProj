@@ -16,6 +16,7 @@ public class PCPickUpBriefcase : MonoBehaviour
         {
             _isCasePickedUp = true;
             Debug.Log("Briefcase achievement Unlocked");
+            PlayerPrefs.SetInt("Perceptive", 1);
             //show briefcase, msg player, set achievement
         }
     }
