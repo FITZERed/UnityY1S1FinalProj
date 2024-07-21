@@ -1,23 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PCPickUpBriefcase : MonoBehaviour
 {
     private bool _isCasePickedUp;
-
-    private void Start()
+    [SerializeField] public Image BriefcaseImage;
+    [SerializeField] public TMP_Text BriefcaseText;
+    public void Start()
     {
         _isCasePickedUp = false;
+        BriefcaseText.enabled = false;
+        BriefcaseImage.enabled = false;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Briefcase" && Input.GetKeyDown(KeyCode.E))
+        if (collision.tag == "Briefcase")
         {
-            _isCasePickedUp = true;
-            Debug.Log("Briefcase achievement Unlocked");
-            PlayerPrefs.SetInt("Perceptive", 1);
-            //show briefcase, msg player, set achievement
+            BriefcaseText.enabled = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                BriefcaseImage.enabled = true;
+                _isCasePickedUp = true;
+                Debug.Log("Briefcase achievement Unlocked");
+                PlayerPrefs.SetInt("Perceptive", 1);
+                //show briefcase, msg player, set achievement
+            }
         }
     }
 }

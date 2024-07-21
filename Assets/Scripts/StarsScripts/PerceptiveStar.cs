@@ -27,5 +27,9 @@ public class PerceptiveStar : MonoBehaviour
         {
             image.enabled = false;
         }
+        if (PlayerPrefs.GetInt("Perceptive") == 0)
+        {
+            image.enabled = false;
+        }
     }
 }

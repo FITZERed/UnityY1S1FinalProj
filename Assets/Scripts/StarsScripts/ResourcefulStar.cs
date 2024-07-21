@@ -27,5 +27,9 @@ public class ResourcefulStar : MonoBehaviour
         {
             image.enabled = false;
         }
+        if (PlayerPrefs.GetInt("Resourceful") == 0)
+        {
+            image.enabled = false;
+        }
     }
 }

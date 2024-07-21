@@ -27,5 +27,9 @@ public class PatientStar : MonoBehaviour
         {
             image.enabled = false;
         }
+        if (PlayerPrefs.GetInt("Patient") == 0)
+        {
+            image.enabled = false;
+        }
     }
 }
