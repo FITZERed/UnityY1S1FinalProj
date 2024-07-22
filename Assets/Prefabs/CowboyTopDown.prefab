@@ -104,6 +104,7 @@ MonoBehaviour:
   bulletSpeed: 1000
   bulletParent: {fileID: 0}
   bulletsInGun: 0
+  reloadTime: 2
 --- !u!114 &5987968996891835147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db333b43b1418240a4bb8d02bd6e220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BriefcaseImage: {fileID: 0}
+  BriefcaseText: {fileID: 0}
 --- !u!114 &1561578321591930057
 MonoBehaviour:
   m_ObjectHideFlags: 0

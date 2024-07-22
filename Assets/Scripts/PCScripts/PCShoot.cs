@@ -12,6 +12,7 @@ public class PCShoot : MonoBehaviour
     [SerializeField] float bulletSpeed = 1000f;
     [SerializeField] GameObject bulletParent;
     [SerializeField] int bulletsInGun;
+    [SerializeField] float reloadTime;
 
     private void Awake()
     {
@@ -31,11 +32,21 @@ public class PCShoot : MonoBehaviour
             InstantiateBullet();
             bulletsInGun--;
         }
+
+        if (Input.GetKeyDown(KeyCode.R) && bulletsInGun == 0)
+        {
+            StartCoroutine(nameof(Reload));
+        }
     }
 
     private void InstantiateBullet()
     {
         SoundFXManager.Instance.PlaySound("Shot556");
         BulletManager.Instance.SpawnBullet(barrel, bullet, crossair, bulletSpeed);
+    }
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadTime);
+        bulletsInGun++;
     }
 }
